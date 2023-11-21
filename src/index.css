@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@300&family=Rock+Salt&family=Satisfy&display=swap');
+body {
+/* Add a gradient background */
+background-color: rgb(77, 77, 77);  /* background-color: #003d7b; */
+  margin: 300px;
+  height: 100vh;
+  margin-top: 35px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+nav {
+  display: flex; 
+  height: 100px;
+  justify-content: space-between; 
+  background: #979797;
+  border-radius: 6px;
+}
+
+nav ul {
+  margin-top: 30px;
+  display: flex;
+  list-style: none;
+}
+
+nav li {
+  padding-left: 25px; 
+  font-size: 1.5rem;
+
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffffff
+}
+
+nav li:hover {
+  text-shadow: 0 0px 20px #c300ff;
+}
+
+
+/* LOG-IN page *********************************************************************************/
+
+/* grids */
+.cont{
+  display: grid;
+  grid-template-columns:2fr 8fr 2fr;
+  grid-template-rows: 1fr 10fr 1fr;
+  grid-template-areas: 
+                      ". . ."
+                      ". logIn ."
+                      ". . .";
+  
+}
+
+.log-in-section{
+  grid-area: logIn;
+
+}
+
+.log-in-section1{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+                      "signup forgotpassword";
+
+}
+
+.signup{
+  grid-area: signup;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.forgotpassword{
+  grid-area: forgotpassword;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+
+
+.login-banner{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 6px;
+  height: auto;
+  width: 50%;
+  margin: 0 auto;
+  /* margin-top: 35px; */
+}
+
+.login-title{
+  /* center title using flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* font-family: 'Rock Salt', cursive; */
+  font-size: 4rem;
+  color: #ababab;
+  margin-bottom: 20px;
+  margin-top: 30px;
+
+}
+
+
+input[type="text"], input[type="password"] {
+  /* width: 80%; */
+  display: inline-block; 
+  border: 1px solid #ccc; 
+  box-sizing: border-box; 
+  border-radius: 4px; 
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+/* Hover effect */
+input[type="text"]:hover, input[type="password"]:hover {
+  background-color: #e6e6e6; 
+}
+
+/* Focus effect */
+input[type="text"]:focus, input[type="password"]:focus {
+  background-color: #ddd; 
+  outline: none; 
+}
+
+/* Style for the login button */
+.button {
+  background-color: #a1a1a1; 
+  color: white; 
+  height: 40px;
+  border: none; 
+  cursor: pointer; 
+  width: 100%; 
+  border-radius: 4px; 
+}
+
+/* Add a hover effect for the button */
+.button:hover {
+  opacity: 0.8; 
+}
+
+.login-text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #ababab;
+  font-size: 2rem;
+}
+
+.inputbox{
+  margin-left: 20px;
+  height: 40px;
+}
+
+.para-title{
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #cacaca;
+  font-size: 2rem;
+}
+
+.para-text{
+  font-size: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #ababab;
+  font-size: 2rem;
+}
+
+
+/* SIGN-UP page *********************************************************************************/
+
+.signup-cont {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background-color: #8f8f8f;
+}
+
+.signup-title {
+  text-align: center;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.signup-section {
+  display: grid;
+  row-gap: 8px;
+}
+
+.signup-label {
+  display: block;
+  margin-bottom: 4px;
+  color: #0a0a0a;
+  font-size: 16px;
+}
+
+.signup-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+}
+
+.signup-button {
+  padding: 10px;
+  border: none;
+  background-color: #3b3b3b;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.signup-button:hover {
+  background-color: #9d9d9d;
+}
+
+.signup-title{
+  /* center title using flexbox */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* font-family: 'Rock Salt', cursive; */
+  font-size: 4rem;
+  color: #424242;
+  margin-bottom: 20px;
+  margin-top: 30px;
+
+}
