@@ -43,9 +43,24 @@ nav a {
 }
 
 nav li:hover {
-  text-shadow: 0 0px 20px #c300ff;
+  text-shadow: 0 0px 20px #4d4d4d;
 }
 
+
+footer {
+  background-color: #333; 
+  color: rgb(203, 203, 203); 
+  text-align: right; 
+  padding: 10px 0; 
+  font-size: 16px; 
+  border-top: 1px solid #444; 
+  border-radius: 5px;
+}
+
+footer p {
+  margin: 0; 
+  margin-right: 20px;
+}
 
 /* LOG-IN page *********************************************************************************/
 
@@ -256,3 +271,53 @@ input[type="text"]:focus, input[type="password"]:focus {
   margin-top: 30px;
 
 }
+
+
+/* CATEGORIES ***************************************************************************************************** */
+
+.categories-cont {
+  background-color: #f0f0f0;
+  padding: 20px;
+  text-align: center;
+}
+
+.categories-cont h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.genres-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
+  gap: 20px;
+  justify-content: center;
+}
+
+.genres-item {
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.genres-title {
+  color: #606060;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.genres-para {
+  color: #555;
+  font-size: 14px;
+}
+
+.genres-item:hover {
+  background-color: #b0b0b0;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+

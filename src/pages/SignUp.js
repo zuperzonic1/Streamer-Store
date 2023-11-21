@@ -8,7 +8,7 @@ function SignUp(props) {
   function goToThanks(e) {
     e.preventDefault();
     console.log("takes us to homepage");
-    navigate('/imagine');
+    navigate('/categories');
   }
 
   return (

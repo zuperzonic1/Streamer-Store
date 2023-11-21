@@ -10,7 +10,7 @@ function LogIn(props){
     function goToThanks(e){
         e.preventDefault();
         console.log("Imagine the future");
-        navigate('/imagine');
+        navigate('/categories');
     }
     return (
         <form className='cont' onSubmit={goToThanks}>

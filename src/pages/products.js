@@ -1,9 +1,9 @@
 import img from '../images/4.jpg';
 
-const Jazz = () => {
+const Products = () => {
     return (
         <>
-        <h1>Jazz</h1>
+        <h1>Products</h1>
         <h2>What is Jazz?</h2>
             <p>Jazz is a captivating genre celebrated for its rich history of improvisation, complex harmonies,
              and expressive melodies. Originating in the African-American communities of New Orleans, jazz has evolved 
@@ -23,4 +23,4 @@ const Jazz = () => {
     );
 }
 
-export default Jazz;
+export default Products;

@@ -11,7 +11,7 @@ function Cart(props){
         navigate('cartconfirmation');
     }
     return (
-        <form className='cont' onSubmit={goToThanks}>
+        <form className='cart-cont' onSubmit={goToThanks}>
                 <section className='cart-container'>
                     <h1>CART-PAGE</h1>
                     <div className='checkout-list'>
@@ -31,8 +31,6 @@ function Cart(props){
                             <p>Quantity</p>
                         </div>
                     </div>
-                    
-    
                     <input className='contact-button' type="submit" value="BUY NOW" />
                 </section>
         </form>

@@ -5,7 +5,7 @@ const Layout = () => {
         <nav>
             <ul className="navigation">
                 <li className="nav-item">
-                    <Link to="/Imagine">LOGO</Link>
+                    <Link to="/categories">LOGO</Link>
                 </li>
                 <li className="nav=item">
                     <Link to="/Genres">Product-Page</Link>
@@ -21,7 +21,7 @@ const Layout = () => {
         <Outlet />
 
         <footer>
-            <p>copyright text</p>
+            <p>&copy; copyright text</p>
         </footer>
     </>
     )
