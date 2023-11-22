@@ -186,6 +186,58 @@ footer p {
 
 }
 
+/* FORGOT PASSWORD *********************************************************************************************** */
+
+.forgot-password-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.forgot-password-title {
+  text-align: center;
+  color: #333;
+}
+
+.forgot-password-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.forgot-password-label {
+  display: grid;
+  gap: 5px;
+  font-weight: bold;
+}
+
+.forgot-password-input {
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.forgot-password-submit {
+  padding: 10px;
+  background-color: #969696;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.forgot-password-submit:hover {
+  background-color: #5b5b5b;
+}
+
+
 
 /* CATEGORIES ***************************************************************************************************** */
 
