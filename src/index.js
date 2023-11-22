@@ -4,17 +4,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LogIn from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
 import ForgotPassword from "./pages/ForgotPassword";
-import Categories from "./pages/categories";
-import Genres from "./pages/Genres";
+import Categories from "./pages/Categories";
+import Products from "./pages/Products";
+import Product from "./pages/Product";
 import Profile from "./pages/Contact";
 import ProfileEdit from "./pages/ContactConfirmation";
 import NoPage from "./pages/NoPage";
-import Who from "./pages/Who";
+// import Who from "./pages/Who";
 import Cart from "./pages/About";
 import CartConfirmation from "./pages/CartConfirmation";
 import Layout from "./pages/Layout"; // Add this import statement
 import "./index.css";
-import Products from "./pages/products";
 
 export default function App() {
 
@@ -47,9 +47,11 @@ export default function App() {
           <Route path="categories" element={<Categories/>} />
           <Route path="categories">
           <Route path="products" element={<Products />} />
-          {/* <Route path="product-page" element={<ProductPage />} /> */}
+            <Route path="products">
+              <Route path="product" element={<Product />} />
+          <Route path="product" element={<Product />} />
 
-
+            </Route>
           </Route>
     
         </Route>

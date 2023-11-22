@@ -8,7 +8,7 @@ const Layout = () => {
                     <Link to="/categories">LOGO</Link>
                 </li>
                 <li className="nav=item">
-                    <Link to="/Genres">Product-Page</Link>
+                    <Link to="/categories/products/product">Product-Page</Link>
                 </li>
                 <li className="nav=item">
                     <Link to="/cart">Cart</Link>
