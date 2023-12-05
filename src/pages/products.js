@@ -1,66 +1,39 @@
-import img from '../images/1.jpg';
-import { Link, Outlet } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase-config';
+import ProductCard from './ProductCard'; // Assuming ProductCard is in the same directory
 
 const Products = () => {
-    return (
+    const [products, setProducts] = useState([]);
 
-        // create cards as components when i have time
-        <>
-            <h1 className="products-page-title">CATEGORIE NAME</h1>
-            <section className='products-list'>
-                <div className="product-card">
-                    <img src={img} alt="mockup img" />
-                    <h1>Product Name</h1>
-                    <h2>Price</h2>
-                    <p>Product description</p>
-                </div>
-                <div className="product-card">
-                    <img src={img} alt="mockup img" />
-                    <h1>Product Name</h1>
-                    <h2>Price</h2>
-                    <p>Product description</p>
-                </div>
-                <div className="product-card">
-                    <img src={img} alt="mockup img" />
-                    <h1>Product Name</h1>
-                    <h2>Price</h2>
-                    <p>Product description</p>
-                </div>
-                <div className="product-card">
-                    <img src={img} alt="mockup img" />
-                    <h1>Product Name</h1>
-                    <h2>Price</h2>
-                    <p>Product description</p>
-                </div>
-            </section>
-            <section className='products-list'>
-                <div className="product-card">
-                    <img src={img} alt="mockup img" />
-                    <h1>Product Name</h1>
-                    <h2>Price</h2>
-                    <p>Product description</p>
-                </div>
-                <div className="product-card">
-                    <img src={img} alt="mockup img" />
-                    <h1>Product Name</h1>
-                    <h2>Price</h2>
-                    <p>Product description</p>
-                </div>
-                <div className="product-card">
-                    <img src={img} alt="mockup img" />
-                    <h1>Product Name</h1>
-                    <h2>Price</h2>
-                    <p>Product description</p>
-                </div>
-                <div className="product-card">
-                    <img src={img} alt="mockup img" />
-                    <h1>Product Name</h1>
-                    <h2>Price</h2>
-                    <p>Product description</p>
-                </div>
-            </section>
-        </>
+    useEffect(() => {
+        const getProducts = async () => {
+            const productsCollectionRef = collection(db, 'Products'); 
+            const data = await getDocs(productsCollectionRef);
+            const items = [];
+            data.docs.forEach((doc) => {
+                items.push({ ...doc.data(), id: doc.id });
+            });
+            setProducts(items);
+        };
+
+        getProducts();
+    }, []);
+
+    // Using a for loop to create ProductCard components
+    const productCards = [];
+    for (const product of products) {
+        productCards.push(<ProductCard key={product.id} product={product} />);
+    }
+
+    return (
+        <div>
+            <h1>Products</h1>
+            <div className='products-container'>
+                {productCards}
+            </div>
+        </div>
     );
-}
+};
 
 export default Products;
