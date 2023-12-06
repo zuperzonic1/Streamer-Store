@@ -1,31 +1,48 @@
-import {useNavigate} from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import img from '../images/1.jpg';
 import { Link } from 'react-router-dom';
 
-
-function LogIn(props){
-
+function LogIn() {
     const navigate = useNavigate();
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-    function goToThanks(e){
+    const Admin = "admin"; 
+    const Password = "password"; 
+
+    function goToThanks(e) {
         e.preventDefault();
-        console.log("Imagine the future");
-        navigate('/categories');
+
+        if (username === Admin && password === Password) {
+            // console.log("Login successful");
+            navigate('/categories');
+        } else {
+            alert("Invalid username or password");
+        }
     }
+
     return (
         <form className='cont' onSubmit={goToThanks}>
             <section className='log-in-section'>
                 
                 <img src={img} className='login-banner' alt='mockup img'/>
-                {/* <br /> */}
                 <h1 className='login-title'>LOG-IN-PAGE</h1>
                 <br />
                 <section className='log-in-section1'>
-                <label className='login-text' > LOG IN:
-                    <input className='inputbox' type="text" onChange={props.handleChange} placeholder='enter your username ...'/>
+                <label className='login-text' > USERNAME:
+                    <input 
+                        className='inputbox' 
+                        type="text" 
+                        onChange={(e) => setUsername(e.target.value)} 
+                        placeholder='enter your username ...'/>
                 </label>
                 <label className='login-text' > PASSWORD:
-                    <input className='inputbox' type="password" onChange={props.handleChange} placeholder='enter your password ...'/>
+                    <input 
+                        className='inputbox' 
+                        type="password" 
+                        onChange={(e) => setPassword(e.target.value)} 
+                        placeholder='enter your password ...'/>
                 </label>
                 </section>
                 <br />
