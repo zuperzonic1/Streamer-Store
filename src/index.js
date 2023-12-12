@@ -45,15 +45,15 @@ export default function App() {
           </Route>
 
           <Route path="categories" element={<Categories/>} />
-          <Route path="categories">
-          <Route path="products" element={<Products />} />
-            <Route path="products">
-              <Route path="product" element={<Product />} />
-          <Route path="product" element={<Product />} />
 
-            </Route>
-          </Route>
+          <Route path="categories">
+          <Route path="chair" element={<Products />} />
+          <Route path="texture" element={<Products />} />
+          <Route path="layout" element={<Products />} />
     
+
+          <Route path="product" element={<Product />} />
+            </Route>
         </Route>
         <Route path="*" element={<NoPage />} />
       </Routes>
