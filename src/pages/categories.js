@@ -1,23 +1,27 @@
 import { Link, Outlet } from 'react-router-dom';
 
 const Categories = () => {
+    // List of categories (this can be dynamic or fetched from a database)
+    const categories = [
+        { name: 'texture', description: 'Explore our unique textures.' },
+        { name: 'chair', description: 'Find comfortable and stylish chairs.' },
+        { name: 'layout', description: 'Discover layout ideas for your space.' },
+        // Add more categories here as needed
+    ];
+
     return (
         <>
             <section className="categories-cont">
                 <h1>Categories-banner</h1>
                 <ul className="genres-list">
-                    <li className="genres-item">
-                        <Link to="/categories/texture" className="genres-title">texture</Link>
-                        <p className="genres-para">Rock music is a dynamic genre characterized by its amplified instruments, powerful vocals, and a defiant, often rebellious spirit.</p>
-                    </li>
-                    <li className="genres-item">
-                        <Link to="/categories/chair" className="genres-title">chair</Link>
-                        <p className="genres-para">Jazz is a captivating genre celebrated for its rich history of improvisation, complex harmonies, and expressive melodies.</p>
-                    </li>
-                    <li className="genres-item">
-                        <Link to="/categories/layout" className="genres-title">layout</Link>
-                        <p className="genres-para">Hip-hop, an urban music genre, combines elements of rapping, DJing, and beatboxing, often delivering powerful messages.</p>
-                    </li>
+                    {categories.map((category) => (
+                        <li key={category.name} className="genres-item">
+                            <Link to={`/categories/${category.name}`} className="genres-title">
+                                {category.name}
+                            </Link>
+                            <p className="genres-para">{category.description}</p>
+                        </li>
+                    ))}
                 </ul>
             </section>
             <Outlet />

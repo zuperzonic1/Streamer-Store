@@ -19,6 +19,13 @@ import "./index.css";
 export default function App() {
 
 
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+  };
+
+  
   // const handleChange = (e) => {
   //   setNamer(e.target.value);
   // };
@@ -27,32 +34,22 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LogIn  />} />
-        <Route path="/signup" element={<SignUp/>} />
+        <Route path="/" element={<LogIn />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
 
+        <Route path="/" element={<Layout />}> 
+          <Route path="cart" element={<Cart cart={cart} />} />
+          <Route path="cart/cartconfirmation" element={<CartConfirmation />} />
 
-        <Route element={<Layout />}>
+          <Route path="profile" element={<Profile />} />
+          <Route path="profile/profileedit" element={<ProfileEdit />} />
 
-          <Route path="cart" element={<Cart />} />
-          <Route path="cart"> 
-            <Route  path="cartconfirmation" element={<CartConfirmation />}/>
-          </Route>
-
-          <Route path="profile" element={<Profile/>} />
-          <Route path="profile"> 
-            <Route  path="profileedit" element={<ProfileEdit />}/>
-          </Route>
-
-          <Route path="categories" element={<Categories/>} />
-
-          <Route path="categories">
-          <Route path="chair" element={<Products />} />
-          <Route path="texture" element={<Products />} />
-          <Route path="layout" element={<Products />} />
-          <Route path="product" element={<Product />} />
-          </Route>
+          <Route path="categories" element={<Categories />} />
+          <Route path="categories/:category" element={<Products addToCart={addToCart} />} />
+          <Route path="product/:productName" element={<Product addToCart={addToCart} />} /> 
         </Route>
+
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>

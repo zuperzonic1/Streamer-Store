@@ -1,53 +1,50 @@
-import img from '../images/1.jpg';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore'; 
+import { db } from '../firebase-config';
+import images from './images'; 
 
-const Product = () => {
+const Product = ({addToCart}) => {
+    const { productName } = useParams();
+    const [product, setProduct] = useState(null);
+
+    useEffect(() => {
+        const getProduct = async () => {
+            const productsCollectionRef = collection(db, 'Products');
+            const data = await getDocs(productsCollectionRef);
+            const foundProduct = data.docs.map(doc => ({ ...doc.data(), id: doc.id }))
+                                        .find(p => p.name.toLowerCase().replace(/ /g, '-') === productName);
+
+            if (foundProduct) {
+                setProduct(foundProduct);
+            }
+        };
+
+        getProduct();
+    }, [productName]);
+
+    // for debugging, checking if i am getting data. 
+    if (!product) {
+        return <div>Loading...</div>;
+    }
+
+    let imageRoute = images[product.image];
+
     return (
         <section>
-            <h1 className="product-title">Product Name</h1>
+            <h1 className="product-title">{product.name}</h1>
             <div className="product-cont">
                 <div className="product-img">
-                    <img src={img} alt="mockup img" />
+                    <img src={imageRoute} alt={product.name} />
                 </div>
                 <div className="product-details">
-                <ul className="product-description-list">
-                    <li className="product-description-item">Product description</li>
-                    <li className="product-description-item">Product description</li>
-                    <li className="product-description-item">Product description</li>
-                    <li className="product-description-item">Product description</li>
-                </ul>
-                    <p className="product-price">$ 9.99</p>
-                    <button className="product-btn">Add to Cart</button>
+                    <ul className="product-description-list">
+                        <li className="product-description-item">{product.description}</li>
+                    </ul>
+                    <p className="product-price">${product.price}</p>
+                    <button className="product-btn" onClick={() => addToCart(product)}>Add to Cart</button>
                 </div>
             </div>
-            <br />
-            <h1 className="product-title">Suggested Products</h1>
-            <section className='product-card-suggestion-list'>
-                <div className="product-card-suggestion">
-                    <img src={img} alt="mockup img" />
-                    <h1>Product Name</h1>
-                    <h2>Price</h2>
-                    <p>Product description</p>
-                </div>
-                <div className="product-card-suggestion">
-                    <img src={img} alt="mockup img" />
-                    <h1>Product Name</h1>
-                    <h2>Price</h2>
-                    <p>Product description</p>
-                </div>
-                <div className="product-card-suggestion">
-                    <img src={img} alt="mockup img" />
-                    <h1>Product Name</h1>
-                    <h2>Price</h2>
-                    <p>Product description</p>
-                </div>
-                <div className="product-card-suggestion">
-                    <img src={img} alt="mockup img" />
-                    <h1>Product Name</h1>
-                    <h2>Price</h2>
-                    <p>Product description</p>
-                </div>
-                <br />
-            </section>
         </section>
     );
 }

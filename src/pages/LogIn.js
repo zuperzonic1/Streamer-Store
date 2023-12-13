@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import img from '../images/1.jpg';
+import img from '../images/logo.png';
 import { Link } from 'react-router-dom';
 
 function LogIn() {

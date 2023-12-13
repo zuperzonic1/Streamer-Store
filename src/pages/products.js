@@ -1,39 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { collection, getDocs } from 'firebase/firestore'; 
 import { db } from '../firebase-config';
-import ProductCard from './ProductCard'; // Assuming ProductCard is in the same directory
+import ProductCard from './ProductCard';
 
-const Products = () => {
-    const [products, setProducts] = useState([]);
+const Products = ({ addToCart }) => {
+  const { category } = useParams();
+  const [products, setProducts] = useState([]);
 
-    useEffect(() => {
-        const getProducts = async () => {
-            const productsCollectionRef = collection(db, 'Products'); 
-            const data = await getDocs(productsCollectionRef);
-            const items = [];
-            data.docs.forEach((doc) => {
-                items.push({ ...doc.data(), id: doc.id });
-            });
-            setProducts(items);
-        };
+  useEffect(() => {
+    const getProducts = async () => {
+      const productsCollectionRef = collection(db, 'Products');
+      const data = await getDocs(productsCollectionRef);
+      const items = [];
+      data.docs.forEach((doc) => {
+        items.push({ ...doc.data(), id: doc.id });
+      });
 
-        getProducts();
-    }, []);
+      // Filter products by category
+      const filteredProducts = items.filter(item => item.category === category);
 
-    // Using a for loop to create ProductCard components
-    const productCards = [];
-    for (const product of products) {
-        productCards.push(<ProductCard key={product.id} product={product} />);
-    }
+      setProducts(filteredProducts);
+    };
 
-    return (
-        <div>
-            <h1>Products</h1>
-            <div className='products-container'>
-                {productCards}
-            </div>
-        </div>
-    );
+    getProducts();
+  }, [category]);
+
+
+
+
+  return (
+    <div>
+      <h1>{category.charAt(0).toUpperCase() + category.slice(1)} Products</h1>
+      <div className='products-container'>
+        {products.map(product => (
+          <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Products;
