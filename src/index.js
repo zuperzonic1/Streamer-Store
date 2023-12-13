@@ -50,10 +50,8 @@ export default function App() {
           <Route path="chair" element={<Products />} />
           <Route path="texture" element={<Products />} />
           <Route path="layout" element={<Products />} />
-    
-
           <Route path="product" element={<Product />} />
-            </Route>
+          </Route>
         </Route>
         <Route path="*" element={<NoPage />} />
       </Routes>

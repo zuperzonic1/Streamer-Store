@@ -1,3 +1,6 @@
+// well after a bunch of googling, stackoverflowing, and using unsanitary tools, I was able to get this to work, and output an img object 
+// instead of flooding my other files with imports
+
 import p1 from '../images/p1.png';
 import p2 from '../images/p2.png';
 import p3 from '../images/p3.png';
