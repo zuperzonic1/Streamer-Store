@@ -1,32 +1,53 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet } from "react-router-dom";
+import img from "../images/cat-banner.png";
 
 const Categories = () => {
-    // List of categories (this can be dynamic or fetched from a database)
-    const categories = [
-        { name: 'texture', description: 'Explore our unique textures.' },
-        { name: 'chair', description: 'Find comfortable and stylish chairs.' },
-        { name: 'layout', description: 'Discover layout ideas for your space.' },
-        // Add more categories here as needed
-    ];
-
-    return (
-        <>
-            <section className="categories-cont">
-                <h1>Categories-banner</h1>
-                <ul className="genres-list">
-                    {categories.map((category) => (
-                        <li key={category.name} className="genres-item">
-                            <Link to={`/categories/${category.name}`} className="genres-title">
-                                {category.name}
-                            </Link>
-                            <p className="genres-para">{category.description}</p>
-                        </li>
-                    ))}
-                </ul>
-            </section>
-            <Outlet />
-        </>
-    );
-}
+  return (
+    <>
+      <section className="categories-cont">
+        <img src={img} className="login-banner" alt="mockup img" />
+        <ul className="genres-list">
+          <Link to="/categories/texture" className="genres-title">
+            <li className="genres-item">
+              TEXTURES
+              <p className="genres-para">
+                Oh, behold the wonders of randomness, where words frolic and
+                sentences dance in a chaotic symphony of pure, unadulterated
+                chance! Here we are, in the realm of unpredictability, where the
+                sentences are as random as a chicken playing the trombone in a
+                marching band of penguins!
+              </p>
+            </li>
+          </Link>
+          <Link to="/categories/chair" className="genres-title">
+            <li className="genres-item">
+              CHAIRS
+              <p className="genres-para">
+                Oh, behold the wonders of randomness, where words frolic and
+                sentences dance in a chaotic symphony of pure, unadulterated
+                chance! Here we are, in the realm of unpredictability, where the
+                sentences are as random as a chicken playing the trombone in a
+                marching band of penguins!
+              </p>
+            </li>
+          </Link>
+          <Link to="/categories/layout" className="genres-title">
+            <li className="genres-item">
+              LAYOUTS
+              <p className="genres-para">
+                Oh, behold the wonders of randomness, where words frolic and
+                sentences dance in a chaotic symphony of pure, unadulterated
+                chance! Here we are, in the realm of unpredictability, where the
+                sentences are as random as a chicken playing the trombone in a
+                marching band of penguins!
+              </p>
+            </li>
+          </Link>
+        </ul>
+      </section>
+      <Outlet />
+    </>
+  );
+};
 
 export default Categories;

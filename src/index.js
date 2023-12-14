@@ -17,7 +17,16 @@ import Layout from "./pages/Layout"; // Add this import statement
 import "./index.css";
 
 export default function App() {
+  const [userProfile, setUserProfile] = useState({
+    firstName: "Micheal",
+    lastName: "Felobes",
+    email: "micheal.felobes@dcmail.com",
+    phoneNumber: "+1234567890",
+  });
 
+  const handleUserProfileChange = (updatedProfile) => {
+    setUserProfile(updatedProfile);
+  };
 
   const [cart, setCart] = useState([]);
 
@@ -25,11 +34,9 @@ export default function App() {
     setCart([...cart, product]);
   };
 
-  
   // const handleChange = (e) => {
   //   setNamer(e.target.value);
   // };
-
 
   return (
     <BrowserRouter>
@@ -38,16 +45,33 @@ export default function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
 
-        <Route path="/" element={<Layout />}> 
+        <Route path="/" element={<Layout />}>
           <Route path="cart" element={<Cart cart={cart} />} />
           <Route path="cart/cartconfirmation" element={<CartConfirmation />} />
 
-          <Route path="profile" element={<Profile />} />
-          <Route path="profile/profileedit" element={<ProfileEdit />} />
+          <Route
+            path="profile"
+            element={<Profile userProfile={userProfile} />}
+          />
+          <Route
+            path="profile/profileedit"
+            element={
+              <ProfileEdit
+                userProfile={userProfile}
+                onProfileChange={handleUserProfileChange}
+              />
+            }
+          />
 
           <Route path="categories" element={<Categories />} />
-          <Route path="categories/:category" element={<Products addToCart={addToCart} />} />
-          <Route path="product/:productName" element={<Product addToCart={addToCart} />} /> 
+          <Route
+            path="categories/:category"
+            element={<Products addToCart={addToCart} />}
+          />
+          <Route
+            path="product/:productName"
+            element={<Product addToCart={addToCart} />}
+          />
         </Route>
 
         <Route path="*" element={<NoPage />} />

@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { collection, getDocs } from 'firebase/firestore'; 
-import { db } from '../firebase-config';
-import ProductCard from './ProductCard';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase-config";
+import ProductCard from "./ProductCard";
 
 const Products = ({ addToCart }) => {
   const { category } = useParams();
@@ -10,7 +10,7 @@ const Products = ({ addToCart }) => {
 
   useEffect(() => {
     const getProducts = async () => {
-      const productsCollectionRef = collection(db, 'Products');
+      const productsCollectionRef = collection(db, "Products");
       const data = await getDocs(productsCollectionRef);
       const items = [];
       data.docs.forEach((doc) => {
@@ -18,7 +18,9 @@ const Products = ({ addToCart }) => {
       });
 
       // Filter products by category
-      const filteredProducts = items.filter(item => item.category === category);
+      const filteredProducts = items.filter(
+        (item) => item.category === category
+      );
 
       setProducts(filteredProducts);
     };
@@ -26,15 +28,21 @@ const Products = ({ addToCart }) => {
     getProducts();
   }, [category]);
 
-
-
-
   return (
     <div>
-      <h1>{category.charAt(0).toUpperCase() + category.slice(1)} Products</h1>
-      <div className='products-container'>
-        {products.map(product => (
-          <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
+      {/* change the title to be uppercase */}
+      {/* chartAt indexes the charectors*/}
+      {/* .slice adds the rest of the text */}
+      <h1 className="products-page-title">
+        {category.charAt(0).toUpperCase() + category.slice(1)} Products
+      </h1>
+      <div className="products-container">
+        {products.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            onAddToCart={addToCart}
+          />
         ))}
       </div>
     </div>

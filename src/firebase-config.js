@@ -13,8 +13,8 @@ const firebaseConfig = {
   projectId: "streamer-store",
   storageBucket: "streamer-store.appspot.com",
   messagingSenderId: "1076203661024",
-  appId: "1:1076203661024:web:77a3bf425e3b6be4651285"
+  appId: "1:1076203661024:web:77a3bf425e3b6be4651285",
 };
-const app = initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig);
 
-export const db = getFirestore(app)
+export const db = getFirestore(app);
