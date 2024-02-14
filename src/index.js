@@ -15,6 +15,7 @@ import Cart from "./pages/About";
 import CartConfirmation from "./pages/CartConfirmation";
 import Layout from "./pages/Layout"; // Add this import statement
 import "./index.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function App() {
   const [userProfile, setUserProfile] = useState({

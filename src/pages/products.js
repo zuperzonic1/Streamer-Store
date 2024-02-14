@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase-config";
 import ProductCard from "./ProductCard";
+import { Container, Row, Col } from "react-bootstrap";
 
 const Products = ({ addToCart }) => {
   const { category } = useParams();
@@ -29,23 +30,18 @@ const Products = ({ addToCart }) => {
   }, [category]);
 
   return (
-    <div>
-      {/* change the title to be uppercase */}
-      {/* chartAt indexes the charectors*/}
-      {/* .slice adds the rest of the text */}
-      <h1 className="products-page-title">
+    <Container className="my-5">
+      <h1 className="text-center text-uppercase mb-4 text-white">
         {category.charAt(0).toUpperCase() + category.slice(1)} Products
       </h1>
-      <div className="products-container">
+      <Row xs={1} md={2} lg={4} className="g-4">
         {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            onAddToCart={addToCart}
-          />
+          <Col key={product.id}>
+            <ProductCard product={product} onAddToCart={addToCart} />
+          </Col>
         ))}
-      </div>
-    </div>
+      </Row>
+    </Container>
   );
 };
 
